@@ -20,6 +20,7 @@ int main (void) {
     int questionNum, response, randomNumber1, randomNumber2, stopCondition = 0;
     char inputQuestion [100];
 
+
     // Generate a seed for the random number generator based on the current time
     srand(time(NULL));
 
