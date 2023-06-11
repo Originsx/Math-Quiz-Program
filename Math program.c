@@ -19,12 +19,9 @@ int main (void) {
     // Assigning Variables
     int questionNum, response, randomNumber1, randomNumber2, stopCondition = 0;
     char inputQuestion [100];
-    char inputResponse [100];
 
     // Generate a seed for the random number generator based on the current time
-    struct timespec ts;
-    clock_gettime(CLOCK_REALTIME, &ts);
-    srand((unsigned)ts.tv_nsec);
+    srand(time(NULL));
 
     // Prompts user to enter number for questions
     printf("How many questions would you like to answer? ");
@@ -45,27 +42,16 @@ int main (void) {
             randomNumber1 = rand() % MAX_NUMBER_1;
             randomNumber2 = rand() % MAX_NUMBER_2;
 
-        // Loop for evaluating user inputResponse
+        // Loop for evaluating user response
         printf("Question %d: What is the product of %d times %d?\n", question, randomNumber1, randomNumber2);
-        scanf("%d", &inputResponse);
+        scanf("%d", &response);
 
-        // Checks if the user's inputResponse is not a number and breaks the loop
-        if (!isdigit(inputResponse[0])) {
-            printf("Sorry, that is not a number. Please try again.\n");
-            break;
-        }
-
-        // Converts the user's inputResponse to an integer
-        else {
-            response= atoi(inputResponse);
-        }
-
-        // Checks if the user's inputResponse is correct and prints the result.
+        // Checks if the user's response is correct and prints the result.
         if (response == randomNumber1 * randomNumber2) {
             printf("Congratulations! That is correct!\n");
         }
 
-        // Checks if the user's inputResponse is incorrect and prints the result.
+        // Checks if the user's response is incorrect and prints the result.
         else if (response != randomNumber1 * randomNumber2) {
             printf("Sorry, that is incorrect. The correct answer is %d.\n", randomNumber1 * randomNumber2);
         }
